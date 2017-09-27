@@ -1,5 +1,3 @@
-const dotenv = require("dotenv").config();
-
 module.exports = {
   development: {
     username: process.env.RDS_USERNAME,
