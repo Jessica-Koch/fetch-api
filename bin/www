@@ -1,8 +1,8 @@
-const http = require('http');
-const app = require('../app');
+const path = require('path');
 
-const port = parseInt(process.env.PORT, 10) || 8000;
-app.set('port', port);
-
-const server = http.createServer(app);
-server.listen(port);
+module.exports = {
+  "config": path.resolve('./server/config', 'config.js'),
+  "models-path": path.resolve('./server/models'),
+  "seeders-path": path.resolve('./server/seeders'),
+  "migrations-path": path.resolve('./server/migrations')
+};
