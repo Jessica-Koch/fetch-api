@@ -1,20 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Dogs = sequelize.define('Dog', {
+  var Dog = sequelize.define('Dog', {
     name: {
-      DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     breed: {
-      DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     sex: {
-      DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     age: {
-      DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Dog.associate = (models) => {
     Dog.belongsTo(models.User, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE'
+      onDelete: 'CASCADE',
     })
     Dog.hasMany(models.Requirement, {
       foreignKey: 'requirementId',
