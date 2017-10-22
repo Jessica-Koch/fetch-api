@@ -1,15 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    phone_number: {
+    phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -19,13 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isEmail: true,
       }
-    }
+    },
   });
 
   User.associate = (models) => {
     User.hasMany(models.Dog, {
-      foreignKey: 'dogId',
-      as: 'dogs',
+      foreignKey: 'userId',
+      as: 'dogs'
     })
   }
 

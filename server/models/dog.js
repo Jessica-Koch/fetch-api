@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Dog.associate = (models) => {
     Dog.belongsTo(models.User, {
       foreignKey: 'userId',
+      allowNull: false,
       onDelete: 'CASCADE',
     })
     Dog.hasMany(models.Requirement, {

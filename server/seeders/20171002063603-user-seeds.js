@@ -6,9 +6,9 @@ module.exports = {
       "Users",
       [
         {
-          first_name: "Jessica",
-          last_name: "Koch",
-          phone_number: "555-555-5555",
+          firstName: "Jessica",
+          lastName: "Koch",
+          phoneNumber: "555-555-5555",
           email: "myemail@test.com",
           createdAt: new Date(),
           updatedAt: new Date()

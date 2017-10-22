@@ -12,15 +12,15 @@ module.exports = {
             type: Sequelize.DataTypes.UUID,
             defaultValue: Sequelize.literal("gen_random_uuid()")
           },
-          first_name: {
+          firstName: {
             allowNull: false,
             type: Sequelize.STRING
           },
-          last_name: {
+          lastName: {
             allowNull: false,
             type: Sequelize.STRING
           },
-          phone_number: {
+          phoneNumber: {
             allowNull: false,
             type: Sequelize.STRING
           },

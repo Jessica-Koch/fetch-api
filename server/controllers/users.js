@@ -5,9 +5,9 @@ module.exports = {
   create(request, response) {
     return User
       .create({
-        first_name: request.body.first_name,
-        last_name: request.body.last_name,
-        phone_number: request.body.phone_number,
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        phoneNumber: request.body.phoneNumber,
         email: request.body.email
       })
       .then(user => response.status(201).send(user))
