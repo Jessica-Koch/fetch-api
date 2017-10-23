@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    age: {
-      type: DataTypes.INTEGER,
+    birthday: {
+      type: DataTypes.DATE,
       allowNull: false
     }
   });
@@ -22,12 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Dog.associate = (models) => {
     Dog.belongsTo(models.User, {
       foreignKey: 'userId',
-      allowNull: false,
-      onDelete: 'CASCADE',
-    })
-    Dog.hasMany(models.Requirement, {
-      foreignKey: 'requirementId',
-      as: 'requirements'
+      onDelete: 'CASCADE'
     })
   }
   return Dog;

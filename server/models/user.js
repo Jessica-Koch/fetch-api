@@ -15,19 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      }
-    },
+      allowNull: false
+    }
   });
 
   User.associate = (models) => {
     User.hasMany(models.Dog, {
       foreignKey: 'userId',
-      as: 'dogs'
+      as: 'dogs',
     })
   }
-
   return User;
 };

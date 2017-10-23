@@ -23,9 +23,9 @@ module.exports = {
             allowNull: false,
             type: Sequelize.STRING
           },
-          age: {
+          birthday: {
             allowNull: false,
-            type: Sequelize.INTEGER
+            type: Sequelize.DATE
           },
           createdAt: {
             allowNull: false,
