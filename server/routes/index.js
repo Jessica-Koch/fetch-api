@@ -18,4 +18,8 @@ module.exports = (app) => {
   app.put('/api/users/:userId/dogs/:dogId', dogsController.update);
   app.delete('/api/users/:userId/dogs/:dogId', dogsController.destroy);
 
+  // vaccine routes
+  app.post('/api/users/:userId/dogs/:dogId/vaccinations', vaccinationsController.create);
+  app.put('/api/users/:userId/dogs/:dogId/vaccinations/:vaccinationId', vaccinationsController.update);
+  app.delete('/api/users/:userId/dogs/:dogId/vaccinations/:vaccinationid', vaccinationsController.destroy);
 }

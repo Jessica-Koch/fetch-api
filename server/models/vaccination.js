@@ -1,15 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Vaccinations = sequelize.define('Vaccinations', {
+  var Vaccination = sequelize.define('Vaccination', {
     rabiesExp: DataTypes.DATE,
     distemperExp: DataTypes.DATE,
     bordetellaExp: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Vaccination.belongsTo(models.Dog, {
+          foreignKey: 'dogId',
+          onDelete: 'CASCADE'
+        })
       }
     }
   });
-  return Vaccinations;
+  return Vaccination;
 };
