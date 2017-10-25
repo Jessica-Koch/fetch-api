@@ -1,20 +1,20 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Requirements', {
+    return queryInterface.createTable('Vaccinations', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      rabies: {
+      rabiesExp: {
         type: Sequelize.DATE
       },
-      distemper: {
+      distemperExp: {
         type: Sequelize.DATE
       },
-      bordetella: {
+      bordetellaExp: {
         type: Sequelize.DATE
       },
       createdAt: {
@@ -24,19 +24,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      dogId: {
-        type: Sequelize.DataTypes.UUID,
-        onDelete: 'Cascade',
-        references: {
-          model: 'Dogs',
-          key: 'id',
-          as: 'dogId'
-        }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Requirements');
+    return queryInterface.dropTable('Vaccinations');
   }
 };
