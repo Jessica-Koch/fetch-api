@@ -1,5 +1,6 @@
 const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
+const vaccinationsController = require('../controllers').vaccinations;
 
 module.exports = (app) => {
   app.get('/api', (request, response) => response.status(200).send({

@@ -1,5 +1,4 @@
-const Dog = require('../models')
-    .Dog;
+const Dog = require('../models').Dog;
 
 module.exports = {
     create(request, response) {

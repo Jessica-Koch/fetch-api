@@ -1,5 +1,4 @@
-const User = require('../models').User;
-const Dog = require('../models').Dog;
+const Vaccination = require('../models').Vaccination;
 
 module.exports = {
   create(request, response) {
