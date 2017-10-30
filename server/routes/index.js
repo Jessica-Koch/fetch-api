@@ -2,12 +2,20 @@ const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
 const vaccinationsController = require('../controllers').vaccinations;
 
+const ensureAuthenticated = (request, response, next) => {
+  if (request.isAuthenticated()) { return next(); }
+  response.redirect('/login')
+}
+
 module.exports = (app) => {
   app.get('/api', (request, response) => response.status(200).send({
     message: 'Welcome to fetch!'
   }));
 
   // user routes
+  router.get('/', ensureAuthenticated, function(req, res, next) {
+  res.render('user', { user: req.user });
+});
   app.post('/api/users', usersController.create);
   app.get('/api/users', usersController.list);
   app.get('/api/users/:userId', usersController.retrieve);

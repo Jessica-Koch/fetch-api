@@ -5,9 +5,12 @@ module.exports = {
     username: process.env.RDS_USERNAME,
     password: process.env.RDS_PASSWORD,
     database: process.env.RDS_DATABASE_NAME,
-    host: process.env.RDS_DB_ENDPOINT,
+    host: 'localhost',
     port: 5432,
-    dialect: "postgres"
+    dialect: "postgres",
+    dialectOptions: {
+    "ssl": false
+    }
   },
   test: {
     "username": "root",
