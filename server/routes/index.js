@@ -2,33 +2,38 @@ const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
 const vaccinationsController = require('../controllers').vaccinations;
 
-const ensureAuthenticated = (request, response, next) => {
-  if (request.isAuthenticated()) { return next(); }
-  response.redirect('/login')
+function ensureAuthenticated(request, response, next) {
+  if (request.isAuthenticated()) {
+    return next();
+  }
+  response.redirect('/login');
 }
 
-module.exports = (app) => {
-  app.get('/api', (request, response) => response.status(200).send({
-    message: 'Welcome to fetch!'
-  }));
+module.exports = router => {
+  router.get('/api', (request, response) =>
+    response.status(200).send({
+      message: 'Welcome to fetch!'
+    })
+  );
 
-  // user routes
-  router.get('/', ensureAuthenticated, function(req, res, next) {
-  res.render('user', { user: req.user });
-});
-  app.post('/api/users', usersController.create);
-  app.get('/api/users', usersController.list);
-  app.get('/api/users/:userId', usersController.retrieve);
-  app.put('/api/users/:userId', usersController.update);
-  app.delete('/api/users/:userId', usersController.destroy);
+  /* User Routes*/
+  router.get('/users', ensureAuthenticated, function(req, res, next) {
+    res.render('user', { user: req.user });
+  });
 
-  // dog routes
-  app.post('/api/users/:userId/dogs', dogsController.create);
-  app.put('/api/users/:userId/dogs/:dogId', dogsController.update);
-  app.delete('/api/users/:userId/dogs/:dogId', dogsController.destroy);
+  // router.post('/api/users', usersController.create);
+  // router.get('/api/users', usersController.list);
+  // router.get('/api/users/:userId', usersController.retrieve);
+  // router.put('/api/users/:userId', usersController.update);
+  router.delete('/api/users/:userId', usersController.destroy);
 
-  // vaccine routes
-  app.post('/api/users/:userId/dogs/:dogId/vaccinations', vaccinationsController.create);
-  app.put('/api/users/:userId/dogs/:dogId/vaccinations/:vaccinationId', vaccinationsController.update);
-  app.delete('/api/users/:userId/dogs/:dogId/vaccinations/:vaccinationid', vaccinationsController.destroy);
-}
+  /* Dog Routes*/
+  router.post('/api/users/:userId/dogs', dogsController.create);
+  router.put('/api/users/:userId/dogs/:dogId', dogsController.update);
+  router.delete('/api/users/:userId/dogs/:dogId', dogsController.destroy);
+
+  /* Vaccine Routes*/
+  router.post('/api/users/:userId/dogs/:dogId/vaccinations', vaccinationsController.create);
+  router.put('/api/users/:userId/dogs/:dogId/vaccinations/:vaccinationId', vaccinationsController.update);
+  router.delete('/api/users/:userId/dogs/:dogId/vaccinations/:vaccinationid', vaccinationsController.destroy);
+};

@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Dog.associate = (models) => {
+  Dog.associate = models => {
     Dog.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
-    })
-  }
+    });
+  };
   return Dog;
 };
