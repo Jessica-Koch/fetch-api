@@ -19,11 +19,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  User.associate = (models) => {
+  User.associate = models => {
     User.hasMany(models.Dog, {
       foreignKey: 'userId',
-      as: 'dogs',
-    })
-  }
+      as: 'dogs'
+    });
+
+    User.hasMany(models.Reservation, {
+      foreignKey: 'userId',
+      as: 'reservations'
+    });
+  };
+
   return User;
 };

@@ -5,6 +5,11 @@ const session = require('express-session');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 
+// TODO install below dependencies
+const jwt = require('express-jwt');
+const cors = require('cors');
+
+app.use(cors);
 const app = express();
 app.use(
   session({
