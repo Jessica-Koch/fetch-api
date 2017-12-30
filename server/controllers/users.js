@@ -1,5 +1,6 @@
 const User = require('../models').User;
 const Dog = require('../models').Dog;
+const Reservation = require('../models').Reservation;
 
 module.exports = {
   create(request, response) {
@@ -32,6 +33,10 @@ module.exports = {
         {
           model: Dog,
           as: 'dogs'
+        },
+        {
+          model: Reservation,
+          as: 'reservations'
         }
       ]
     })
@@ -44,6 +49,10 @@ module.exports = {
         {
           model: Dog,
           as: 'dogs'
+        },
+        {
+          model: Reservation,
+          as: 'reservations'
         }
       ]
     })
@@ -63,6 +72,10 @@ module.exports = {
         {
           model: Dog,
           as: 'dogs'
+        },
+        {
+          model: Reservation,
+          as: 'reservations'
         }
       ]
     })

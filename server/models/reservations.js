@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Stay = sequelize.define('Stay', {
+  const Reservation = sequelize.define('Reservation', {
     start: {
       type: DataTypes.DATE,
       allowNull: false
@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Stay.associate = models => {
-    Stay.belongsTo(models.User, {
+  Reservation.associate = models => {
+    Reservation.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     });
   };
 
-  return Stay;
+  return Reservation;
 };
