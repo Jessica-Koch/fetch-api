@@ -1,6 +1,6 @@
 const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
-// const reservationsController = require('../controllers').reservations;
+const reservationsController = require('../controllers').reservations;
 const vaccinationsController = require('../controllers').vaccinations;
 
 function ensureAuthenticated(request, response, next) {
@@ -29,9 +29,9 @@ module.exports = router => {
   router.delete('/api/users/:userId', usersController.destroy);
 
   /* Reservation routes */
-  // router.post('/api/users/:userId/reservations', reservationsController.create);
-  // router.put('/api/users/:userId/reservations/:reservationId', reservationsController.update);
-  // router.delete('/api/users/:userId/reservations/:reservationId', reservationsController.destroy);
+  router.post('/api/users/:userId/reservations', reservationsController.create);
+  router.put('/api/users/:userId/reservations/:reservationId', reservationsController.update);
+  router.delete('/api/users/:userId/reservations/:reservationId', reservationsController.destroy);
 
   /* Dog Routes*/
   router.post('/api/users/:userId/dogs', dogsController.create);

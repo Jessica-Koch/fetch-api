@@ -1,6 +1,6 @@
 const Reservation = require('../models').Reservation;
 
-module.export = {
+module.exports = {
   create(request, response) {
     return Reservation.create({
       start: request.body.start,
