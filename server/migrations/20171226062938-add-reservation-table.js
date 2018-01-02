@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Reservations', {
@@ -17,6 +16,14 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATE
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
       userId: {
         type: Sequelize.DataTypes.UUID,
         onDelete: 'CASCADE',
@@ -28,7 +35,6 @@ module.exports = {
       }
     });
   },
-
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Reservations');
   }
