@@ -5,10 +5,9 @@ const Reservation = require('../models').Reservation;
 module.exports = {
   create(request, response) {
     return User.create({
-      firstName: request.body.firstName,
-      lastName: request.body.lastName,
-      phoneNumber: request.body.phoneNumber,
-      email: request.body.email
+      name: request.body.name,
+      email: request.body.email,
+      password: request.body.password
     })
       .then(() =>
         User.findOrCreate({

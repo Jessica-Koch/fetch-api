@@ -1,7 +1,7 @@
-const users = require('./users');
-const dogs = require('./dogs');
-const reservations = require('./reservations');
-const vaccinations = require('./vaccinations');
+const users = require('./UsersController');
+const dogs = require('./DogsController');
+const reservations = require('./ReservationsController');
+const vaccinations = require('./VaccinationsController');
 
 module.exports = {
   users,

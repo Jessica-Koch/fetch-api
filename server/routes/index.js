@@ -2,6 +2,9 @@ const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
 const reservationsController = require('../controllers').reservations;
 const vaccinationsController = require('../controllers').vaccinations;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 function ensureAuthenticated(request, response, next) {
   if (request.isAuthenticated()) {
@@ -18,15 +21,15 @@ module.exports = router => {
   );
 
   /* User Routes*/
-  router.get('/users', ensureAuthenticated, function(req, res, next) {
-    res.render('user', { user: req.user });
-  });
+  // router.get('/users', ensureAuthenticated, function(req, res, next) {
+  //   res.render('user', { user: req.user });
+  // });
 
   // router.post('/api/users', usersController.create);
   // router.get('/api/users', usersController.list);
   // router.get('/api/users/:userId', usersController.retrieve);
   // router.put('/api/users/:userId', usersController.update);
-  router.delete('/api/users/:userId', usersController.destroy);
+  // router.delete('/api/users/:userId', usersController.destroy);
 
   /* Reservation routes */
   router.post('/api/users/:userId/reservations', reservationsController.create);
