@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passportFacebook = require('../auth/facebook');
 const passportGoogle = require('../auth/google');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -12,22 +12,21 @@ require('dotenv').config();
 
 router.post('/register', function(req, res) {
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-
-  User.create(
-    {
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword
-    },
-    function(err, user) {
-      if (err) return res.status(500).send('There was a problem registering the user.');
+  console.log('SECRET: ', process.env.JWT_SECRET);
+  User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: hashedPassword
+  })
+    .then(user => {
       // create a token
       var token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: 86400 // expires in 24 hours
       });
-      res.status(200).send({ auth: true, token: token });
-    }
-  );
+
+      res.status(201).send({ auth: true, token: token });
+    })
+    .catch(error => res.status(400).send(error));
 });
 
 router.get('/me', function(req, res) {
