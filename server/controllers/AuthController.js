@@ -12,7 +12,6 @@ require('dotenv').config();
 
 router.post('/register', function(req, res) {
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-  console.log('SECRET: ', process.env.JWT_SECRET);
   User.create({
     name: req.body.name,
     email: req.body.email,
@@ -30,7 +29,8 @@ router.post('/register', function(req, res) {
 });
 
 router.get('/me', function(req, res) {
-  const token = req.headers['x-access-token'];
+  console.log('-----------WILL THIS WORK-----------');
+  var token = req.headers['x-access-token'];
   if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
 
   jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
